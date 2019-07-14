@@ -25,6 +25,9 @@ public class GraphQLProvider {
     @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
 
+    @Autowired
+    GraphQLMutationFetcher graphQLMutationFetcher;
+
     private GraphQL graphQL;
 
     @PostConstruct
@@ -47,8 +50,8 @@ public class GraphQLProvider {
                 .type(newTypeWiring("Query")
                         .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher())
                         .dataFetcher("authorById", graphQLDataFetchers.getAuthorByIdDataFetcher()))
-                .type(newTypeWiring("Book")
-                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher()))
+                .type(newTypeWiring("Mutation")
+                        .dataFetcher("createBook", graphQLMutationFetcher.createBook))
                 .build();
     }
 

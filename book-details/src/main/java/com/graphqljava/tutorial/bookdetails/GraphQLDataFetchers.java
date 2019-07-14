@@ -1,17 +1,17 @@
 package com.graphqljava.tutorial.bookdetails;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import graphql.schema.DataFetcher;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @Component
 public class GraphQLDataFetchers {
 
-    private static List<Map<String, String>> books = Arrays.asList(
+    public static List<Map<String, String>> books = Lists.newArrayList(
             ImmutableMap.of("id", "book-1",
                     "name", "Harry Potter and the Philosopher's Stone",
                     "pageCount", "223",
@@ -26,7 +26,7 @@ public class GraphQLDataFetchers {
                     "authorId", "author-3")
     );
 
-    private static List<Map<String, String>> authors = Arrays.asList(
+    public static List<Map<String, String>> authors = Lists.newArrayList(
             ImmutableMap.of("id", "author-1",
                     "firstName", "Joanne",
                     "lastName", "Rowling"),
